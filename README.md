@@ -1,5 +1,13 @@
 Nautilus tool
 
+Initial Config
+- npm install --global vsce
+- install on VS Code ESLint
+- npm install on project
+- npm run watch (runtime recompile)
+- Run F5
+- vsce package (to create package extension)
+
 ToDo List
   - SSO login
   - Refactor & clean project
