@@ -1,5 +1,7 @@
 Nautilus tool
 
+https://github.com/microsoft/vscode-extension-samples
+
 Initial Config
 - npm install --global vsce
 - install on VS Code ESLint
@@ -14,7 +16,11 @@ ToDo List
   - Interface for Mac & Windows based on system 
   - Kubernetes
     - list available ports
-    - list services/deployment/pod         
+    - list services/deployment/pod   
+  - Prometheus
+    - up/down
+  - Grafana
+    - expose ports          
   - Create config File
   - Create Cluster command
     - Configure & upload Cluster  
