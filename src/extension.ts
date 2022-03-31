@@ -1,45 +1,57 @@
 'use strict';
-
 import * as vscode from 'vscode';
-//https://www.npmjs.com/package/vsce
-//vsce package
+import {CommandBuilder,XTerminalCluster} from "./builders/commandBuilder";
+
 export function activate(context: vscode.ExtensionContext) {
-	let NEXT_TERM_ID = 20;
+	
+	
+	const commandBuilder = new CommandBuilder(context);
+	const terminalCluster = new XTerminalCluster("FowardGrafana");
+	terminalCluster.Add("Grafana:3000",["kubectl port-forward svc/kube-prometheus-stack-grafana 3000:80"],"Access Grafana in http://localhost:3000");
+	terminalCluster.Add("Prometheus:9090",["kubectl port-forward svc/kube-prometheus-stack-prometheus 9090"],"Access Prometheus in http://localhost:9090");	
+	commandBuilder.BuildCluster(terminalCluster);
 
-	console.log("Terminals: " + (<any>vscode.window).terminals.length);
+	commandBuilder.BuildTerminal("java",["mvn clean install -DskipTests"],"","MavenCompile");
 
+
+
+
+
+
+
+	//console.log("Terminals: " + (<any>vscode.window).terminals.length);
 	// vscode.window.onDidOpenTerminal
-	vscode.window.onDidOpenTerminal(terminal => {
+	/*vscode.window.onDidOpenTerminal(terminal => {
 		console.log("Terminal opened. Total count: " + (<any>vscode.window).terminals.length);
-	});
-	vscode.window.onDidOpenTerminal((terminal: vscode.Terminal) => {
+	});*/
+	/*vscode.window.onDidOpenTerminal((terminal: vscode.Terminal) => {
 		vscode.window.showInformationMessage(`onDidOpenTerminal, name: ${terminal.name}`);
-	});
+	});*/
 
 	// vscode.window.onDidChangeActiveTerminal
-	vscode.window.onDidChangeActiveTerminal(e => {
+	/*vscode.window.onDidChangeActiveTerminal(e => {
 		console.log(`Active terminal changed, name=${e ? e.name : 'undefined'}`);
-	});
+	});*/
 
 	// vscode.window.createTerminal
-	context.subscriptions.push(vscode.commands.registerCommand('terminalTest.createTerminal', () => {
-		vscode.window.createTerminal(`Ext Terminal #${NEXT_TERM_ID++}`);
+	/*context.subscriptions.push(vscode.commands.registerCommand('terminalTest.createTerminal', () => {
+		//vscode.window.createTerminal(`Ext Terminal #${NEXT_TERM_ID++}`);
 		vscode.window.showInformationMessage('Hello World 2!');
-	}));
-	context.subscriptions.push(vscode.commands.registerCommand('terminalTest.createTerminalHideFromUser', () => {
+	}));*/
+	/*context.subscriptions.push(vscode.commands.registerCommand('terminalTest.createTerminalHideFromUser', () => {
 		vscode.window.createTerminal({
-			name: `Ext Terminal #${NEXT_TERM_ID++}`,
+			//name: `Ext Terminal #${NEXT_TERM_ID++}`,
 			hideFromUser: true
 		} as any);
-	}));
-	context.subscriptions.push(vscode.commands.registerCommand('terminalTest.createAndSend', () => {
-		const terminal = vscode.window.createTerminal(`Ext Terminal #${NEXT_TERM_ID++}`);
+	}));*/
+	//context.subscriptions.push(vscode.commands.registerCommand('terminalTest.createAndSend', () => {
+		/*const terminal = vscode.window.createTerminal(`Ext Terminal #${NEXT_TERM_ID++}`);
 		terminal.sendText("echo 'Sent text immediately after creating'");
-		terminal.sendText("kubectl");
-	}));
-	context.subscriptions.push(vscode.commands.registerCommand('terminalTest.createZshLoginShell', () => {
-		vscode.window.createTerminal(`Ext Terminal #${NEXT_TERM_ID++}`, '/bin/zsh', ['-l']);
-	}));
+		terminal.sendText("kubectl");*/
+	//}));
+	/*context.subscriptions.push(vscode.commands.registerCommand('terminalTest.createZshLoginShell', () => {
+		//vscode.window.createTerminal(`Ext Terminal #${NEXT_TERM_ID++}`, '/bin/zsh', ['-l']);
+	}));*/
 
 	// Terminal.hide
 	context.subscriptions.push(vscode.commands.registerCommand('terminalTest.PushPublisherImage', () => {
@@ -51,9 +63,9 @@ export function activate(context: vscode.ExtensionContext) {
 						terminal.show(true);
 						terminal.sendText("aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 822112283600.dkr.ecr.eu-west-1.amazonaws.com");
 						terminal.sendText(`kubectl delete deployment   main-${service}`);
-						terminal.sendText(`docker build -t 822112283600.dkr.ecr.eu-west-1.amazonaws.com/${service}:nautilus${NEXT_TERM_ID} .`);
-						terminal.sendText(`docker push 822112283600.dkr.ecr.eu-west-1.amazonaws.com/${service}:nautilus${NEXT_TERM_ID} `);
-						NEXT_TERM_ID++;
+						//terminal.sendText(`docker build -t 822112283600.dkr.ecr.eu-west-1.amazonaws.com/${service}:nautilus${NEXT_TERM_ID} .`);
+						//terminal.sendText(`docker push 822112283600.dkr.ecr.eu-west-1.amazonaws.com/${service}:nautilus${NEXT_TERM_ID} `);
+						//NEXT_TERM_ID++;
 					
 					}
 				}
@@ -62,22 +74,7 @@ export function activate(context: vscode.ExtensionContext) {
 	}));
 
 	// Terminal.show
-	context.subscriptions.push(vscode.commands.registerCommand('terminalTest.ForwardPrometheusPorts', () => {
-		if (ensureTerminalExists()) {
-			/*selectTerminal().then(terminal => {
-				if (terminal) {
-					terminal.show();
-				}
-			});*/
-			const terminal1 = vscode.window.createTerminal(`Grafana:3000`, '/bin/bash', ['-l']);
-			terminal1.show(true);
-			if (terminal1) {terminal1.sendText("kubectl port-forward svc/kube-prometheus-stack-grafana 3000:80");}		
 
-			const terminal2 = vscode.window.createTerminal(`Prometheus:9090`, '/bin/bash', ['-l']);
-			terminal2.show(true);
-			if (terminal2) {terminal2.sendText("kubectl port-forward svc/kube-prometheus-stack-prometheus 9090");}
-		}
-	}));
 	context.subscriptions.push(vscode.commands.registerCommand('terminalTest.showPreserveFocus', () => {
 		if (ensureTerminalExists()) {
 			selectTerminal().then(terminal => {
@@ -89,7 +86,7 @@ export function activate(context: vscode.ExtensionContext) {
 	}));
 
 	// Terminal.sendText
-	context.subscriptions.push(vscode.commands.registerCommand('terminalTest.Compile', () => {
+	/*context.subscriptions.push(vscode.commands.registerCommand('terminalTest.Compile', () => {
 		if (ensureTerminalExists()) {
 			const terminal = vscode.window.createTerminal(`Maven`, '/bin/bash', ['-l']);
 			terminal.show(true);
@@ -103,7 +100,7 @@ export function activate(context: vscode.ExtensionContext) {
 				}
 			//});
 		}
-	}));
+	}));*/
 	context.subscriptions.push(vscode.commands.registerCommand('terminalTest.ForwardPublisherDependencies', () => {
 		if (ensureTerminalExists()) {
 			const terminal1 = vscode.window.createTerminal(`Rabbit:15672`, '/bin/bash', ['-l']);

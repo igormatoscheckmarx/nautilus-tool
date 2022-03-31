@@ -36,3 +36,7 @@ ToDo List
   - Port-Forward   
     - Read AST values config   
   - Delete target folder  
+
+
+//https://www.npmjs.com/package/vsce
+//vsce package

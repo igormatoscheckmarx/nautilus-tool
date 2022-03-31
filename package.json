@@ -5,7 +5,7 @@
 	"version": "0.0.1",
 	"publisher": "Checkmarx",
 	"private": true,
-	"icon":"icon.png",
+	"icon": "icon.png",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
@@ -42,6 +42,16 @@
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
+			{
+				"command": "nautilusTools.FowardGrafana",
+				"title": "Activate Grafana",
+				"category": "Nautilus"
+			},
+			{
+				"command": "nautilusTools.MavenCompile",
+				"title": "Maven Compile",
+				"category": "Nautilus"
+			},
 			{
 				"command": "terminalTest.createAndSend",
 				"title": "Terminal API: Create Terminal and Immediately Send"
@@ -83,21 +93,12 @@
 				"command": "terminalTest.processId",
 				"title": "Terminal API: Get process ID"
 			},
-			{
-				"command": "terminalTest.Compile",
-				"title": "Maven Compile",
-				"category": "Nautilus"
-			},
+			
 			{
 				"command": "terminalTest.ForwardPublisherDependencies",
 				"title": "Kubectl Forward For Publisher Dependencies",
 				"category": "Nautilus"
-			},
-			{
-				"command": "terminalTest.ForwardPrometheusPorts",
-				"title": "Activate Grafana",
-				"category": "Nautilus"
-			},
+			},			
 			{
 				"command": "terminalTest.showPreserveFocus",
 				"title": "Terminal API: Show (preserving focus)"
