@@ -25,7 +25,7 @@ export class CommandBuilder{
 		}));
     }
 
-	BuildCluster(terminalCluster:XTerminalCluster) : void {
+	BuildCluster(terminalCluster:TerminalCluster) : void {
 		this.context.subscriptions.push(vscode.commands.registerCommand(`${AppConstants.APP_NAME}${terminalCluster.commandCaller}`, () => {			
 			terminalCluster.GetTerminals().forEach(element => {
 				
@@ -57,7 +57,7 @@ export class XTerminal {
 	public finalLog:string;
 }
 
-export class XTerminalCluster{
+export class TerminalCluster{
   
 	terminals : XTerminal[];
 	public commandCaller : string;

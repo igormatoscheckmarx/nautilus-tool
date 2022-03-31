@@ -19,111 +19,40 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:terminalTest.createAndSend",
-		"onCommand:terminalTest.createTerminal",
-		"onCommand:terminalTest.createTerminalHideFromUser",
-		"onCommand:terminalTest.createZshLoginShell",
-		"onCommand:terminalTest.dimensions",
-		"onCommand:terminalTest.dispose",
-		"onCommand:terminalTest.PushPublisherImage",
-		"onCommand:terminalTest.onDidChangeTerminalDimensions",
-		"onCommand:terminalTest.onDidWriteTerminalData",
-		"onCommand:terminalTest.processId",
-		"onCommand:terminalTest.registerTerminalLinkProvider",
-		"onCommand:terminalTest.Compile",
-		"onCommand:terminalTest.ForwardPublisherDependencies",
-		"onCommand:terminalTest.ForwardPrometheusPorts",
-		"onCommand:terminalTest.showPreserveFocus",
-		"onCommand:terminalTest.terminals",
-		"onCommand:terminalTest.updateEnvironment",
-		"onCommand:terminalTest.clearEnvironment",
-		"onTerminalProfile:terminalTest.terminal-profile"
+		"onCommand:cxDevTools.awsSSO",
+		"onCommand:cxDevTools.awsLogin",
+		"onCommand:cxDevTools.awsPublishEcrImage",		
+		"onCommand:cxDevTools.kubeDeleteAny",
+		"onCommand:cxDevTools.kubeGetBaseAddress",
+		"onCommand:cxDevTools.mavenCompile",
+		"onCommand:cxDevTools.astPrometheus",
+		"onCommand:cxDevTools.astUpgrade",
+		"onCommand:cxDevTools.astFirstDeploy",
+		"onCommand:cxDevTools.astServicePortFowarding",
+		"onCommand:cxDevTools.astGrafanaPortFowarding",
+		"onCommand:cxDevTools.astDebugPortFowarding",
+		"onCommand:cxDevTools.astDeployService",
+		"onCommand:cxDevTools.dockerCreateImage",
+		"onTerminalProfile:cxDevTools.terminal-profile"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "nautilusTools.FowardGrafana",
+				"command": "cxDevTools.astGrafanaPortFowarding",
 				"title": "Activate Grafana",
-				"category": "Nautilus"
+				"category": "CxDev"
 			},
 			{
-				"command": "nautilusTools.MavenCompile",
+				"command": "cxDevTools.mavenCompile",
 				"title": "Maven Compile",
-				"category": "Nautilus"
-			},
-			{
-				"command": "terminalTest.createAndSend",
-				"title": "Terminal API: Create Terminal and Immediately Send"
-			},
-			{
-				"command": "terminalTest.createTerminal",
-				"title": "Terminal API: Create Terminal"
-			},
-			{
-				"command": "terminalTest.createTerminalHideFromUser",
-				"title": "Terminal API: Create Terminal (hideFromUser)"
-			},
-			{
-				"command": "terminalTest.createZshLoginShell",
-				"title": "Terminal API: Create Terminal (zsh login shell)"
-			},
-			{
-				"command": "terminalTest.dimensions",
-				"title": "Terminal API: Set dimensions"
-			},
-			{
-				"command": "terminalTest.dispose",
-				"title": "Terminal API: Dispose"
-			},
-			{
-				"command": "terminalTest.PushPublisherImage",
-				"title": "Push Publisher Image",
-				"category": "Nautilus"
-			},
-			{
-				"command": "terminalTest.onDidWriteTerminalData",
-				"title": "Terminal API: Attach data listener"
-			},
-			{
-				"command": "terminalTest.onDidChangeTerminalDimensions",
-				"title": "Terminal API: Attach dimensions listener"
-			},
-			{
-				"command": "terminalTest.processId",
-				"title": "Terminal API: Get process ID"
-			},
-			
-			{
-				"command": "terminalTest.ForwardPublisherDependencies",
-				"title": "Kubectl Forward For Publisher Dependencies",
-				"category": "Nautilus"
-			},			
-			{
-				"command": "terminalTest.showPreserveFocus",
-				"title": "Terminal API: Show (preserving focus)"
-			},
-			{
-				"command": "terminalTest.terminals",
-				"title": "Terminal API: View terminals"
-			},
-			{
-				"command": "terminalTest.updateEnvironment",
-				"title": "Terminal API: Update environment"
-			},
-			{
-				"command": "terminalTest.clearEnvironment",
-				"title": "Terminal API: Clear environment"
-			},
-			{
-				"command": "terminalTest.registerTerminalLinkProvider",
-				"title": "Terminal API: Register link provider"
+				"category": "CxDev"
 			}
 		],
 		"terminal": {
 			"profiles": [
 				{
-					"id": "terminalTest.terminal-profile",
+					"id": "cxDevTools.terminal-profile",
 					"icon": "terminal",
 					"title": "Terminal API Profile"
 				}

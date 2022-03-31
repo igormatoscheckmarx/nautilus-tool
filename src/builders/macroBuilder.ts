@@ -1,0 +1,48 @@
+/* eslint-disable @typescript-eslint/no-inferrable-types */
+import * as vscode from 'vscode';
+import {AppConstants} from "../common/constants";
+export class MacroBuilder{
+  
+	public context: vscode.ExtensionContext;
+    constructor(context: vscode.ExtensionContext){
+		this.context = context;
+	}
+
+	BuildMacro(macro:IMacro, commandCaller:string) : void {
+		this.context.subscriptions.push(vscode.commands.registerCommand(`${AppConstants.APP_NAME}${commandCaller}`, () => {													
+			macro.Execute();					
+		}));
+    }
+
+	BuildCluster(macroCluster:MacroCluster) : void {
+		this.context.subscriptions.push(vscode.commands.registerCommand(`${AppConstants.APP_NAME}${macroCluster.commandCaller}`, () => {			
+			macroCluster.GetMacros().forEach(element => {								
+				element.Execute();		
+			});		
+		}));
+    }
+}
+
+
+export interface IMacro{
+	
+	Execute (): void;
+}
+
+export class MacroCluster{
+  
+	macros : IMacro[];
+	public commandCaller : string;
+    constructor(commandCaller:string){
+		this.macros = [];
+		this.commandCaller = commandCaller;
+	}
+
+    Add(macro:IMacro) : void {
+		this.macros.push(macro);
+    }
+
+	GetMacros():IMacro[]{
+		return this.macros;
+	}
+}

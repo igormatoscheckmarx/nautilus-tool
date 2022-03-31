@@ -10,7 +10,7 @@ export class Constants{
 		this.NAUTILUS_AWS = "Nautilus AWS";
 		this.NAUTILUS_KUBE = "Nautilus KUBERNETS";
 		this.NAUTILUS_AST = "Nautilus AST";		
-		this.APP_NAME = "nautilusTools";
+		this.APP_NAME = "cxDevTools";
 	}
 }
 export const AppConstants = new Constants();
