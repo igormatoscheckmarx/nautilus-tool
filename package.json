@@ -1,7 +1,7 @@
 {
-	"name": "ast-nautilus-tools",
-	"displayName": "ast-nautilus-tools",
-	"description": "Ast Nautilus Tools",
+	"name": "cxnautilus",
+	"displayName": "cX Nautilus",
+	"description": "cx Nautilus Tools",
 	"version": "0.0.1",
 	"publisher": "Checkmarx",
 	"private": true,
