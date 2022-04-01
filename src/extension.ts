@@ -3,12 +3,13 @@ import * as vscode from 'vscode';
 import {CommandBuilder,TerminalCluster} from "./builders/commandBuilder";
 import {MacroBuilder} from "./builders/macroBuilder";
 import {DeployServiceMacro} from "./macros/deployServiceMacro";
+import {Variables} from "./common/variables";
 
 export function activate(context: vscode.ExtensionContext) {
-	
-	
+		
 	const commandBuilder = new CommandBuilder(context);
 	const macroBuilder = new MacroBuilder(context);
+	const variables = new Variables(context);
 
 	//TerminalCluster Example
 	const terminalCluster = new TerminalCluster("astGrafanaPortFowarding");
