@@ -15,9 +15,11 @@ export class DeployServiceMacro /*extends LambdaExecuterBase*/ implements IMacro
 		
 		this.selectors.SelectService().then(service => {
 			const terminal = Outputs.GetMainTerminal();
+			terminal.show(true);
+			
 			if(service){
-				const guid = Guid.newGuid();
-				terminal.show(true);
+
+				const guid = Guid.newGuid();				
 				terminal.sendText(`Deploying Service ${service}`);
 				terminal.sendText("aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 822112283600.dkr.ecr.eu-west-1.amazonaws.com");
 				terminal.sendText(`kubectl delete deployment   main-${service}`);

@@ -14,9 +14,9 @@ export class DeleteServiceMacro /*extends LambdaExecuterBase*/ implements IMacro
 		
 		this.selectors.SelectService().then(service => {
 			const terminal = Outputs.GetMainTerminal(); 
-			if(service){
-				
-				terminal.show(true);
+			terminal.show(true);
+			
+			if(service){			
 				terminal.sendText(`Deleting Service ${service}`);
 				terminal.sendText(`kubectl delete deployment   main-${service}`);
 			} else terminal.sendText(`Operation Canceled`);
