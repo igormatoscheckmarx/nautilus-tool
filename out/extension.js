@@ -10,8 +10,8 @@ function activate(context) {
     //const variables = new Variables(context);
     //TerminalCluster Example
     const terminalCluster = new commandRegister_1.TerminalCluster("astGrafanaPortFowarding");
-    terminalCluster.Add("Grafana:3000", ["kubectl port-forward svc/kube-prometheus-stack-grafana 3000:80"], "Access Grafana in http://localhost:3000");
-    terminalCluster.Add("Prometheus:9090", ["kubectl port-forward svc/kube-prometheus-stack-prometheus 9090"], "Access Prometheus in http://localhost:9090");
+    terminalCluster.AddTerminal("Grafana:3000", ["kubectl port-forward svc/kube-prometheus-stack-grafana 3000:80"], "Access Grafana in http://localhost:3000");
+    terminalCluster.AddTerminal("Prometheus:9090", ["kubectl port-forward svc/kube-prometheus-stack-prometheus 9090"], "Access Prometheus in http://localhost:9090");
     commandRegister.RegisterCluster(terminalCluster);
     //Single Terminal Example
     commandRegister.Register("java", ["mvn clean install -DskipTests"], "", "mavenCompile");

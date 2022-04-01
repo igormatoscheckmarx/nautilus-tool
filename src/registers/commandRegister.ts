@@ -67,7 +67,7 @@ export class TerminalCluster{
 		this.commandCaller = commandCaller;
 	}
 
-    Add(terminalTitle: string, commands: string[],finalLog:string) : void {
+    AddTerminal(terminalTitle: string, commands: string[],finalLog:string) : void {
 		this.terminals.push(new XTerminal(terminalTitle,commands,finalLog));
     }
 

@@ -13,8 +13,8 @@ export function activate(context: vscode.ExtensionContext) {
 
 	//TerminalCluster Example
 	const terminalCluster = new TerminalCluster("astGrafanaPortFowarding");
-	terminalCluster.Add("Grafana:3000",["kubectl port-forward svc/kube-prometheus-stack-grafana 3000:80"],"Access Grafana in http://localhost:3000");
-	terminalCluster.Add("Prometheus:9090",["kubectl port-forward svc/kube-prometheus-stack-prometheus 9090"],"Access Prometheus in http://localhost:9090");	
+	terminalCluster.AddTerminal("Grafana:3000",["kubectl port-forward svc/kube-prometheus-stack-grafana 3000:80"],"Access Grafana in http://localhost:3000");
+	terminalCluster.AddTerminal("Prometheus:9090",["kubectl port-forward svc/kube-prometheus-stack-prometheus 9090"],"Access Prometheus in http://localhost:9090");	
 	commandRegister.RegisterCluster(terminalCluster);
 
 	//Single Terminal Example
