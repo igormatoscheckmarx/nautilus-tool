@@ -21,7 +21,7 @@
 	"activationEvents": [
 		"onCommand:cxDevTools.awsSSO",
 		"onCommand:cxDevTools.awsLogin",
-		"onCommand:cxDevTools.awsPublishEcrImage",		
+		"onCommand:cxDevTools.awsPublishEcrImage",
 		"onCommand:cxDevTools.kubeDeleteAny",
 		"onCommand:cxDevTools.kubeGetBaseAddress",
 		"onCommand:cxDevTools.mavenCompile",

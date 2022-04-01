@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 import * as vscode from 'vscode';
-import {AppConstants} from "../common/constants";
+import * as constants from "../common/constants";
 export class CommandBuilder{
   
 	public context: vscode.ExtensionContext;
@@ -9,7 +9,7 @@ export class CommandBuilder{
 	}
 
     BuildTerminal(terminalTitle: string, commands: string[], finalLog:string, commandCaller:string) : void {
-		this.context.subscriptions.push(vscode.commands.registerCommand(`${AppConstants.APP_NAME}${commandCaller}`, () => {
+		this.context.subscriptions.push(vscode.commands.registerCommand(`${constants.AppConstants.APP_NAME}.${commandCaller}`, () => {
 			const terminal = vscode.window.createTerminal(terminalTitle);
 			if (terminal) {
 
@@ -26,7 +26,7 @@ export class CommandBuilder{
     }
 
 	BuildCluster(terminalCluster:TerminalCluster) : void {
-		this.context.subscriptions.push(vscode.commands.registerCommand(`${AppConstants.APP_NAME}${terminalCluster.commandCaller}`, () => {			
+		this.context.subscriptions.push(vscode.commands.registerCommand(`${constants.AppConstants.APP_NAME}.${terminalCluster.commandCaller}`, () => {			
 			terminalCluster.GetTerminals().forEach(element => {
 				
 				const terminal = vscode.window.createTerminal(element.terminalTitle);

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 import * as vscode from 'vscode';
-import {AppConstants} from "../common/constants";
+import * as constants from "../common/constants";
 export class MacroBuilder{
   
 	public context: vscode.ExtensionContext;
@@ -9,13 +9,13 @@ export class MacroBuilder{
 	}
 
 	BuildMacro(macro:IMacro, commandCaller:string) : void {
-		this.context.subscriptions.push(vscode.commands.registerCommand(`${AppConstants.APP_NAME}${commandCaller}`, () => {													
+		this.context.subscriptions.push(vscode.commands.registerCommand(`${constants.AppConstants.APP_NAME}.${commandCaller}`, () => {													
 			macro.Execute();					
 		}));
     }
 
 	BuildCluster(macroCluster:MacroCluster) : void {
-		this.context.subscriptions.push(vscode.commands.registerCommand(`${AppConstants.APP_NAME}${macroCluster.commandCaller}`, () => {			
+		this.context.subscriptions.push(vscode.commands.registerCommand(`${constants.AppConstants.APP_NAME}.${macroCluster.commandCaller}`, () => {			
 			macroCluster.GetMacros().forEach(element => {								
 				element.Execute();		
 			});		
