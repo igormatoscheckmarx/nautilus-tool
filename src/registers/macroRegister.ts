@@ -1,20 +1,20 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 import * as vscode from 'vscode';
 import * as constants from "../common/constants";
-export class MacroBuilder{
+export class MacroRegister{
   
 	public context: vscode.ExtensionContext;
     constructor(context: vscode.ExtensionContext){
 		this.context = context;
 	}
 
-	BuildMacro(macro:IMacro, commandCaller:string) : void {
+	Register(macro:IMacro, commandCaller:string) : void {
 		this.context.subscriptions.push(vscode.commands.registerCommand(`${constants.AppConstants.APP_NAME}.${commandCaller}`, () => {													
 			macro.Execute();					
 		}));
     }
 
-	BuildCluster(macroCluster:MacroCluster) : void {
+	RegisterCluster(macroCluster:MacroCluster) : void {
 		this.context.subscriptions.push(vscode.commands.registerCommand(`${constants.AppConstants.APP_NAME}.${macroCluster.commandCaller}`, () => {			
 			macroCluster.GetMacros().forEach(element => {								
 				element.Execute();		

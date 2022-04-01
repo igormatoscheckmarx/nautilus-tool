@@ -1,7 +1,7 @@
 {
-	"name": "ast-nautilus-tools",
-	"displayName": "ast-nautilus-tools",
-	"description": "Ast Nautilus Tools",
+	"name": "cxnautilus",
+	"displayName": "cX Nautilus",
+	"description": "cx Nautilus Tools",
 	"version": "0.0.1",
 	"publisher": "Checkmarx",
 	"private": true,
@@ -32,6 +32,7 @@
 		"onCommand:cxDevTools.astGrafanaPortFowarding",
 		"onCommand:cxDevTools.astDebugPortFowarding",
 		"onCommand:cxDevTools.astDeployService",
+		"onCommand:cxDevTools.astDeleteService",
 		"onCommand:cxDevTools.dockerCreateImage",
 		"onTerminalProfile:cxDevTools.terminal-profile"
 	],
@@ -50,7 +51,12 @@
 			},
 			{
 				"command": "cxDevTools.astDeployService",
-				"title": "Deploy",
+				"title": "Deploy Service",
+				"category": "CxDev"
+			},
+			{
+				"command": "cxDevTools.astDeleteService",
+				"title": "Delete Service",
 				"category": "CxDev"
 			}
 		],
@@ -77,5 +83,8 @@
 		"@typescript-eslint/parser": "^4.16.0",
 		"eslint": "^7.21.0",
 		"typescript": "^4.5.5"
+	},
+	"dependencies": {
+		"ts-generic-collections-linq": "^1.0.7"
 	}
 }

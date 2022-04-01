@@ -1,25 +1,26 @@
 'use strict';
 import * as vscode from 'vscode';
-import {CommandBuilder,TerminalCluster} from "./builders/commandBuilder";
-import {MacroBuilder} from "./builders/macroBuilder";
-import {DeployServiceMacro} from "./macros/deployServiceMacro";
-import {Variables} from "./common/variables";
+import {CommandRegister,TerminalCluster} from "./registers/commandRegister";
+import {MacroRegister} from "./registers/macroRegister";
+import {DeployServiceMacro,} from "./macros/deployServiceMacro";
+import {DeleteServiceMacro,} from "./macros/deleteServiceMacro";
 
 export function activate(context: vscode.ExtensionContext) {
 		
-	const commandBuilder = new CommandBuilder(context);
-	const macroBuilder = new MacroBuilder(context);
-	const variables = new Variables(context);
-
-	//TerminalCluster Example
+	const commandRegister = new CommandRegister(context);
+	const macroRegister = new MacroRegister(context);
+	
+	//Commands
 	const terminalCluster = new TerminalCluster("astGrafanaPortFowarding");
-	terminalCluster.Add("Grafana:3000",["kubectl port-forward svc/kube-prometheus-stack-grafana 3000:80"],"Access Grafana in http://localhost:3000");
-	terminalCluster.Add("Prometheus:9090",["kubectl port-forward svc/kube-prometheus-stack-prometheus 9090"],"Access Prometheus in http://localhost:9090");	
-	commandBuilder.BuildCluster(terminalCluster);
+	terminalCluster.AddTerminal("Grafana:3000",["kubectl port-forward svc/kube-prometheus-stack-grafana 3000:80"],"Access Grafana in http://localhost:3000");
+	terminalCluster.AddTerminal("Prometheus:9090",["kubectl port-forward svc/kube-prometheus-stack-prometheus 9090"],"Access Prometheus in http://localhost:9090");	
+	commandRegister.RegisterCluster(terminalCluster);
+	
+	commandRegister.Register("java",["mvn clean install -DskipTests"],"","mavenCompile");
 
-	//Single Terminal Example
-	commandBuilder.BuildTerminal("java",["mvn clean install -DskipTests"],"","mavenCompile");
+	//Macros
+	macroRegister.Register(new DeployServiceMacro(),"astDeployService");
+	macroRegister.Register(new DeleteServiceMacro(),"astDeleteService");
 
-	//Single Macro Example
-	macroBuilder.BuildMacro(new DeployServiceMacro(),"astDeployService");
+	
 }
