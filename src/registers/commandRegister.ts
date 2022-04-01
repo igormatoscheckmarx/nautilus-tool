@@ -19,7 +19,7 @@ export class CommandRegister{
 				});	
 	
 				if(finalLog!="")					
-						terminal.sendText(`echo '${finalLog}'`);				
+						terminal.sendText(`'${finalLog}'`);				
 
 				terminal.show();
 			}			
@@ -38,7 +38,7 @@ export class CommandRegister{
 					});	
 
 					if(element.finalLog!="")					
-						terminal.sendText(`echo '${element.finalLog}'`);	
+						terminal.sendText(`'${element.finalLog}'`);	
 					
 					terminal.show();
 				}		

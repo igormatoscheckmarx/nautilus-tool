@@ -32,6 +32,7 @@
 		"onCommand:cxDevTools.astGrafanaPortFowarding",
 		"onCommand:cxDevTools.astDebugPortFowarding",
 		"onCommand:cxDevTools.astDeployService",
+		"onCommand:cxDevTools.astDeleteService",
 		"onCommand:cxDevTools.dockerCreateImage",
 		"onTerminalProfile:cxDevTools.terminal-profile"
 	],
@@ -50,7 +51,12 @@
 			},
 			{
 				"command": "cxDevTools.astDeployService",
-				"title": "Deploy",
+				"title": "Deploy Service",
+				"category": "CxDev"
+			},
+			{
+				"command": "cxDevTools.astDeleteService",
+				"title": "Delete Service",
 				"category": "CxDev"
 			}
 		],
