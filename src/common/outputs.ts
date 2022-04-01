@@ -1,9 +1,10 @@
+/* eslint-disable prefer-const */
 
 
 /* eslint-disable @typescript-eslint/no-empty-function */
 'use strict';
 import * as vscode from 'vscode';
-
+import {List} from 'ts-generic-collections-linq';
 export class Outputs{
 	
 	constructor(){}
@@ -27,6 +28,22 @@ export class Outputs{
 
 	Log(message: string){
 		vscode.window.showInformationMessage(message);
+	}
+
+	EnsureTerminalExists(): boolean {
+		if ((<any>vscode.window).terminals.length === 0) {
+			vscode.window.showErrorMessage('No active terminals');
+			return false;
+		}
+		return true;
+	}
+
+	public static GetMainTerminal(): vscode.Terminal {
+		const list = new List((<any>vscode.window).terminals);
+		let mainTerminal = list.firstOrDefault((item: any)=>(item as vscode.Terminal).name=="Main terminal");
+		if(mainTerminal==null){
+			return vscode.window.createTerminal("Main terminal");						
+		} else return mainTerminal as vscode.Terminal;
 	}
 }
 

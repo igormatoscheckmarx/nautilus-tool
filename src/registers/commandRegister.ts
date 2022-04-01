@@ -1,16 +1,17 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 import * as vscode from 'vscode';
 import * as constants from "../common/constants";
-export class CommandBuilder{
+import {Outputs} from "../common/outputs";
+export class CommandRegister{
   
 	public context: vscode.ExtensionContext;
     constructor(context: vscode.ExtensionContext){
 		this.context = context;
 	}
 
-    BuildTerminal(terminalTitle: string, commands: string[], finalLog:string, commandCaller:string) : void {
+    Register(terminalTitle: string, commands: string[], finalLog:string, commandCaller:string, useDefaultTerminal:boolean=true) : void {
 		this.context.subscriptions.push(vscode.commands.registerCommand(`${constants.AppConstants.APP_NAME}.${commandCaller}`, () => {
-			const terminal = vscode.window.createTerminal(terminalTitle);
+			const terminal = useDefaultTerminal?Outputs.GetMainTerminal():vscode.window.createTerminal(terminalTitle);
 			if (terminal) {
 
 				commands.forEach(element => {
@@ -25,7 +26,7 @@ export class CommandBuilder{
 		}));
     }
 
-	BuildCluster(terminalCluster:TerminalCluster) : void {
+	RegisterCluster(terminalCluster:TerminalCluster) : void {
 		this.context.subscriptions.push(vscode.commands.registerCommand(`${constants.AppConstants.APP_NAME}.${terminalCluster.commandCaller}`, () => {			
 			terminalCluster.GetTerminals().forEach(element => {
 				

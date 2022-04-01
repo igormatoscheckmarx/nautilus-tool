@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import * as vscode from 'vscode';
-import {IMacro} from "../builders/macroBuilder";
+import {IMacro} from "../registers/macroRegister";
 import {Selectors} from "../common/selectors";
 import {Guid} from "../common/guid";
 export class DeployServiceMacro /*extends LambdaExecuterBase*/ implements IMacro {

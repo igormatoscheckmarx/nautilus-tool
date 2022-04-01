@@ -77,5 +77,8 @@
 		"@typescript-eslint/parser": "^4.16.0",
 		"eslint": "^7.21.0",
 		"typescript": "^4.5.5"
+	},
+	"dependencies": {
+		"ts-generic-collections-linq": "^1.0.7"
 	}
 }
