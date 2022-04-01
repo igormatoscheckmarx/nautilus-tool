@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 'use strict';
 import * as vscode from 'vscode';
+import  {Config}  from './readConfig';
+import { Services } from '../models/Services';
 export class Selectors{
+
+	conf: Config = new Config();
 	
 	constructor(){}
 
@@ -9,16 +13,20 @@ export class Selectors{
 		interface ServiceQuickPickItem extends vscode.QuickPickItem {
 			service: string;
 		}
+
+		const servicesName:string[] = this.conf.getServicesName();
 		
-		const services:string[] = [
+	
+		/*
+		const servicesName:string[] = [
 			"ast-flow-publisher",
 			"ast-flow-listener",
 			"integrations-repos-manager",
 			"integrations-datastore",
 			"feedback-app"
 			];
-		
-		return vscode.window.showQuickPick(services).then(item => {
+		*/
+		return vscode.window.showQuickPick(servicesName).then(item => {
 			return item ? item : undefined;
 		});
 	}

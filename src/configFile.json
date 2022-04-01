@@ -1,0 +1,27 @@
+{
+	"astPath": "",
+	"devName": "",
+	"teamName": "",
+	"services": [
+	{
+		"name":"ast-flow-publisher",
+		"path":""
+	},
+	{
+		"name":"ast-flow-listener",
+		"path":""
+	},
+	{
+		"name":"integrations-repos-manager",
+		"path":""
+	},
+	{
+		"name":"integrations-datastore",
+		"path":""
+	},
+	{
+		"name":"feedback-app",
+		"path":""
+	}
+	]
+}
