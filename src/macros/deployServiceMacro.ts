@@ -13,18 +13,17 @@ export class DeployServiceMacro /*extends LambdaExecuterBase*/ implements IMacro
     Execute (): void{
 		
 		this.selectors.SelectService().then(service => {
-			if (service) {
-				const terminal = vscode.window.createTerminal(`Deploy Service ${service}`);
-				if (terminal) {
-					const guid = Guid.newGuid();
-					terminal.show(true);
-					terminal.sendText("aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 822112283600.dkr.ecr.eu-west-1.amazonaws.com");
-					terminal.sendText(`kubectl delete deployment   main-${service}`);
-					terminal.sendText(`docker build -t 822112283600.dkr.ecr.eu-west-1.amazonaws.com/${service}:nautilus${guid} .`);
-					terminal.sendText(`docker push 822112283600.dkr.ecr.eu-west-1.amazonaws.com/${service}:nautilus${guid} `);					
-					terminal.sendText(`echo 'Macro finished'`);
-				}
-			}
+			
+			const terminal = vscode.window.createTerminal(`Deploy Service ${service}`);
+		
+			const guid = Guid.newGuid();
+			terminal.show(true);
+			terminal.sendText("aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 822112283600.dkr.ecr.eu-west-1.amazonaws.com");
+			terminal.sendText(`kubectl delete deployment   main-${service}`);
+			terminal.sendText(`docker build -t 822112283600.dkr.ecr.eu-west-1.amazonaws.com/${service}:nautilus${guid} .`);
+			terminal.sendText(`docker push 822112283600.dkr.ecr.eu-west-1.amazonaws.com/${service}:nautilus${guid} `);					
+			terminal.sendText(`echo 'Macro finished'`);			
+			
 		});		
 	}
 }

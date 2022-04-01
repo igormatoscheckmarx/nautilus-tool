@@ -47,6 +47,11 @@
 				"command": "cxDevTools.mavenCompile",
 				"title": "Maven Compile",
 				"category": "CxDev"
+			},
+			{
+				"command": "cxDevTools.astDeployService",
+				"title": "Deploy",
+				"category": "CxDev"
 			}
 		],
 		"terminal": {
