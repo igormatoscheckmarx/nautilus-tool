@@ -23,6 +23,5 @@ export function activate(context: vscode.ExtensionContext) {
 	macroRegister.Register(new DeployServiceMacro(),"astDeployService");
 	macroRegister.Register(new DeleteServiceMacro(),"astDeleteService");
 	macroRegister.Register(new DeleteClusterMacro(),"astDeleteCluster");
-
 	
 }

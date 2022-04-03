@@ -6,23 +6,28 @@
 	"services": [
 	{
 		"name":"ast-flow-publisher",
-		"path":""
+		"path":"",
+		"chartParth":""
 	},
 	{
 		"name":"ast-flow-listener",
-		"path":""
+		"path":"",
+		"chartParth":""
 	},
 	{
 		"name":"integrations-repos-manager",
-		"path":""
+		"path":"",
+		"chartParth":""
 	},
 	{
 		"name":"integrations-datastore",
-		"path":""
+		"path":"",
+		"chartParth":""
 	},
 	{
 		"name":"feedback-app",
-		"path":""
+		"path":"",
+		"chartParth":""
 	}
 	]
 }
