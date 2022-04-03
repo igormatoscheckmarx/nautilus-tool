@@ -1,17 +1,18 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import * as config from '../configFile.json';
-import { Services } from '../models/Services';
+import { AppConfig } from '../models/AppConfig';
+import { Service } from '../models/Service';
 
 export class Config{	
 
 	constructor() {}	
 
-	getServices(): Services[] {
+	getServices(): Service[] {
 		return config.services;
 	}
 
 	getServicesName(): string[]{
-		const services: Services[] = this.getServices();
+		const services: Service[] = this.getServices();
 
 		const servicesName: string[] = Array<string>();
 
@@ -20,6 +21,10 @@ export class Config{
 		});
 		
 		return servicesName;
+	}
+
+	getConfig(): AppConfig {
+		return config;
 	}
 
 }

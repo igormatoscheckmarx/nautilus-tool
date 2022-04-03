@@ -1,4 +1,4 @@
-export class Services{
+export class Service{
 
 	name: string;
 	path: string;

@@ -1,7 +1,8 @@
 {
-	"astPath": "",
+	"astPath": "/Users/igormatos/Repos/ast/helm",
 	"devName": "",
 	"teamName": "",
+	"clusters": ["Nautilus-Igor","Nautilus-Orly","Nautilus-Jorge","Nautilus-Ely"],
 	"services": [
 	{
 		"name":"ast-flow-publisher",

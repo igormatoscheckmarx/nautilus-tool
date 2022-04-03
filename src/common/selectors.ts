@@ -2,7 +2,7 @@
 'use strict';
 import * as vscode from 'vscode';
 import  {Config}  from './readConfig';
-import { Services } from '../models/Services';
+import { Service } from '../models/Service';
 export class Selectors{
 
 	conf: Config = new Config();
@@ -15,18 +15,21 @@ export class Selectors{
 		}
 
 		const servicesName:string[] = this.conf.getServicesName();
-		
 	
-		/*
-		const servicesName:string[] = [
-			"ast-flow-publisher",
-			"ast-flow-listener",
-			"integrations-repos-manager",
-			"integrations-datastore",
-			"feedback-app"
-			];
-		*/
 		return vscode.window.showQuickPick(servicesName).then(item => {
+			return item ? item : undefined;
+		});
+	}
+
+
+	SelectCluster(): Thenable<string | undefined> {
+		interface ServiceQuickPickItem extends vscode.QuickPickItem {
+			service: string;
+		}
+
+		const clusters:string[] = this.conf.getConfig().clusters;
+	
+		return vscode.window.showQuickPick(clusters).then(item => {
 			return item ? item : undefined;
 		});
 	}

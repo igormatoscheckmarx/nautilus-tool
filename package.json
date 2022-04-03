@@ -27,6 +27,7 @@
 		"onCommand:cxDevTools.mavenCompile",
 		"onCommand:cxDevTools.astPrometheus",
 		"onCommand:cxDevTools.astUpgrade",
+		"onCommand:cxDevTools.astDeleteCluster",
 		"onCommand:cxDevTools.astFirstDeploy",
 		"onCommand:cxDevTools.astServicePortFowarding",
 		"onCommand:cxDevTools.astGrafanaPortFowarding",
@@ -57,6 +58,11 @@
 			{
 				"command": "cxDevTools.astDeleteService",
 				"title": "Delete Service",
+				"category": "CxDev"
+			},
+			{
+				"command": "cxDevTools.astDeleteCluster",
+				"title": "Delete Cluster",
 				"category": "CxDev"
 			}
 		],
