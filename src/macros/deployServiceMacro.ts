@@ -20,11 +20,11 @@ export class DeployServiceMacro /*extends LambdaExecuterBase*/ implements IMacro
 			if(service){
 
 				const guid = Guid.newGuid();				
-				terminal.sendText(`Deploying Service ${service}`);
+				terminal.sendText(`Deploying Service ${service.name}`);
 				terminal.sendText("aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 822112283600.dkr.ecr.eu-west-1.amazonaws.com");
-				terminal.sendText(`kubectl delete deployment   main-${service}`);
-				terminal.sendText(`docker build -t 822112283600.dkr.ecr.eu-west-1.amazonaws.com/${service}:nautilus${guid} .`);
-				terminal.sendText(`docker push 822112283600.dkr.ecr.eu-west-1.amazonaws.com/${service}:nautilus${guid} `);					
+				terminal.sendText(`kubectl delete deployment   main-${service.name}`);
+				terminal.sendText(`docker build -t 822112283600.dkr.ecr.eu-west-1.amazonaws.com/${service.name}:nautilus${guid} .`);
+				terminal.sendText(`docker push 822112283600.dkr.ecr.eu-west-1.amazonaws.com/${service.name}:nautilus${guid} `);					
 				terminal.sendText(`'Macro finished'`);			
 			} else terminal.sendText(`Operation Canceled`);
 			

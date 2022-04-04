@@ -91,6 +91,7 @@
 		"typescript": "^4.5.5"
 	},
 	"dependencies": {
-		"ts-generic-collections-linq": "^1.0.7"
+		"ts-generic-collections-linq": "^1.0.7",
+		"yaml": "^1.10.2"
 	}
 }

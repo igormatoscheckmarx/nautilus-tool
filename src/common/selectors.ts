@@ -3,21 +3,24 @@
 import * as vscode from 'vscode';
 import  {Config}  from './readConfig';
 import { Service } from '../models/Service';
+import {List} from 'ts-generic-collections-linq';
 export class Selectors{
 
 	conf: Config = new Config();
 	
 	constructor(){}
 
-	SelectService(): Thenable<string | undefined> {
+	SelectService(): Thenable<Service | undefined> {
 		interface ServiceQuickPickItem extends vscode.QuickPickItem {
-			service: string;
+			service: Service;
 		}
 
 		const servicesName:string[] = this.conf.getServicesName();
 	
 		return vscode.window.showQuickPick(servicesName).then(item => {
-			return item ? item : undefined;
+			const services = new List(this.conf.getServices());
+			const service = services.firstOrDefault(x=>x.name==item);
+			return service ? service : undefined;
 		});
 	}
 

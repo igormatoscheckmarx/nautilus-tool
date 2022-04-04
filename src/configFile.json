@@ -1,5 +1,5 @@
 {
-	"astPath": "/Users/igormatos/Repos/ast/helm",
+	"astPath": "/Users/igormatos/Repos/ast",
 	"devName": "",
 	"teamName": "",
 	"clusters": ["Nautilus-Igor","Nautilus-Orly","Nautilus-Jorge","Nautilus-Ely"],
@@ -7,27 +7,27 @@
 	{
 		"name":"ast-flow-publisher",
 		"path":"",
-		"chartParth":""
+		"chartPath":"/helm/charts/ast-flow-publisher"
 	},
 	{
 		"name":"ast-flow-listener",
 		"path":"",
-		"chartParth":""
+		"chartPath":""
 	},
 	{
 		"name":"integrations-repos-manager",
 		"path":"",
-		"chartParth":""
+		"chartPath":""
 	},
 	{
 		"name":"integrations-datastore",
 		"path":"",
-		"chartParth":""
+		"chartPath":""
 	},
 	{
 		"name":"feedback-app",
 		"path":"",
-		"chartParth":""
+		"chartPath":""
 	}
 	]
 }
