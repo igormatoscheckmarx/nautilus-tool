@@ -4,7 +4,6 @@ import {IMacro} from "../registers/macroRegister";
 import {Selectors} from "./selectors";
 import {Guid} from "./guid";
 import {Outputs} from "./outputs";
-import {Config}  from './readConfig';
 import {AppConfig}  from '../models/AppConfig';
 import {Service}  from '../models/Service';
 import { parse, stringify } from 'yaml';
@@ -12,7 +11,7 @@ import { parse, stringify } from 'yaml';
 //import YAML from 'yaml'
 export class ServicePortReader{
 
-	conf: AppConfig = new Config().getConfig();
+	conf: AppConfig = AppConfig.getInstance();
     constructor(){}
 
     Read = (service:Service): Promise<any> =>{
