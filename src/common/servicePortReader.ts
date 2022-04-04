@@ -15,13 +15,16 @@ export class ServicePortReader{
 	conf: AppConfig = new Config().getConfig();
     constructor(){}
 
-    Read (service:Service): void{
-		const uri= `${this.conf.astPath}${service.chartPath}/values.yaml`;
-		vscode.workspace.openTextDocument(uri).then((document) => {
-			const text = document.getText();
-			//potFoward here
-			const serviceValues = parse(text);
-			console.log(serviceValues.service.grpcPort);
+    Read = (service:Service): Promise<any> =>{
+		const cx = this.conf;
+		return new Promise(function (resolve, reject){
+			const uri= `${cx.astPath}${service.chartPath}/values.yaml`;
+			vscode.workspace.openTextDocument(uri).then((document) => {
+				const text = document.getText();
+				//potFoward here
+				const serviceValues = parse(text);			
+				resolve(serviceValues.service.grpcPort);				
+			});
 		});
 	}
 }
