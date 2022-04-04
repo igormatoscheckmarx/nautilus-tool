@@ -2,7 +2,8 @@
 import * as config from '../configFile.json';
 import { AppConfig } from '../models/AppConfig';
 import { Service } from '../models/Service';
-
+import { parseJson } from '../common/parseJson';
+import * as fs from "fs";
 export class Config{	
 
 	constructor() {}	
@@ -24,7 +25,11 @@ export class Config{
 	}
 
 	getConfig(): AppConfig {
-		return config;
+		const path="/Users/igormatos/.nautilus/configFile.json";
+		if( fs.existsSync(path)) {            
+			return parseJson<AppConfig>(fs.readFileSync(path).toString());  
+		}
+		return new AppConfig();
 	}
 
 }
