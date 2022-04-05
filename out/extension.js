@@ -5,6 +5,7 @@ const commandRegister_1 = require("./registers/commandRegister");
 const macroRegister_1 = require("./registers/macroRegister");
 const deployServiceMacro_1 = require("./macros/deployServiceMacro");
 const deleteServiceMacro_1 = require("./macros/deleteServiceMacro");
+const CreateClusterMacro_1 = require("./macros/CreateClusterMacro");
 const deleteClusterMacro_1 = require("./macros/deleteClusterMacro");
 function activate(context) {
     const commandRegister = new commandRegister_1.CommandRegister(context);
@@ -19,6 +20,7 @@ function activate(context) {
     macroRegister.Register(new deployServiceMacro_1.DeployServiceMacro(), "astDeployService");
     macroRegister.Register(new deleteServiceMacro_1.DeleteServiceMacro(), "astDeleteService");
     macroRegister.Register(new deleteClusterMacro_1.DeleteClusterMacro(), "astDeleteCluster");
+    macroRegister.Register(new CreateClusterMacro_1.CreateClusterMacro(), "astCreateCluster");
 }
 exports.activate = activate;
 //# sourceMappingURL=extension.js.map

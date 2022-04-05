@@ -4,7 +4,8 @@ import {CommandRegister,TerminalCluster} from "./registers/commandRegister";
 import {MacroRegister} from "./registers/macroRegister";
 import {DeployServiceMacro,} from "./macros/deployServiceMacro";
 import {DeleteServiceMacro,} from "./macros/deleteServiceMacro";
-import { DeleteClusterMacro } from './macros/deleteClusterMacro';
+import {CreateClusterMacro,} from "./macros/CreateClusterMacro";
+import {DeleteClusterMacro ,} from './macros/deleteClusterMacro';
 
 export function activate(context: vscode.ExtensionContext) {
 		
@@ -23,5 +24,6 @@ export function activate(context: vscode.ExtensionContext) {
 	macroRegister.Register(new DeployServiceMacro(),"astDeployService");
 	macroRegister.Register(new DeleteServiceMacro(),"astDeleteService");
 	macroRegister.Register(new DeleteClusterMacro(),"astDeleteCluster");
+	macroRegister.Register(new CreateClusterMacro(),"astCreateCluster");
 	
 }

@@ -34,6 +34,7 @@
 		"onCommand:cxDevTools.astDebugPortFowarding",
 		"onCommand:cxDevTools.astDeployService",
 		"onCommand:cxDevTools.astDeleteService",
+		"onCommand:cxDevTools.astCreateCluster",
 		"onCommand:cxDevTools.dockerCreateImage",
 		"onTerminalProfile:cxDevTools.terminal-profile"
 	],
@@ -58,6 +59,11 @@
 			{
 				"command": "cxDevTools.astDeleteService",
 				"title": "Delete Service",
+				"category": "CxDev"
+			},
+			{
+				"command": "cxDevTools.astCreateCluster",
+				"title": "Create Cluster",
 				"category": "CxDev"
 			},
 			{
