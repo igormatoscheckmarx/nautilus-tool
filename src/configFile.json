@@ -2,7 +2,7 @@
 	"astPath": "/Users/igormatos/Repos/ast",
 	"devName": "",
 	"teamName": "",
-	"clusters": ["Nautilus-Igor","Nautilus-Orly","Nautilus-Jorge","Nautilus-Ely"],
+	"clusters": ["Nautilus-Igor","Nautilus-Orly","Nautilus-Jorge","Nautilus-ely","Nautilus-Ely"],
 	"services": [
 	{
 		"name":"ast-flow-publisher",
