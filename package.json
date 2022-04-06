@@ -27,6 +27,7 @@
 		"onCommand:cxDevTools.mavenCompile",
 		"onCommand:cxDevTools.astPrometheus",
 		"onCommand:cxDevTools.astUpgrade",
+		"onCommand:cxDevTools.astDebugMode",
 		"onCommand:cxDevTools.astDeleteCluster",
 		"onCommand:cxDevTools.astFirstDeploy",
 		"onCommand:cxDevTools.astServicePortFowarding",
@@ -63,6 +64,11 @@
 			{
 				"command": "cxDevTools.astDeleteCluster",
 				"title": "Delete Cluster",
+				"category": "CxDev"
+			},
+			{
+				"command": "cxDevTools.astDebugMode",
+				"title": "Debug Mode",
 				"category": "CxDev"
 			}
 		],

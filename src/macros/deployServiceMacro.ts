@@ -24,6 +24,7 @@ export class DeployServiceMacro /*extends LambdaExecuterBase*/ implements IMacro
 				terminal.sendText("aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 822112283600.dkr.ecr.eu-west-1.amazonaws.com");
 				terminal.sendText(`kubectl delete deployment   main-${service.name}`);
 				terminal.sendText(`docker build -t 822112283600.dkr.ecr.eu-west-1.amazonaws.com/${service.name}:nautilus${guid} .`);
+				//verificar
 				terminal.sendText(`docker push 822112283600.dkr.ecr.eu-west-1.amazonaws.com/${service.name}:nautilus${guid} `);					
 				terminal.sendText(`'Macro finished'`);			
 			} else terminal.sendText(`Operation Canceled`);

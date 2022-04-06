@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 'use strict';
 import * as vscode from 'vscode';
-import  {Config}  from './readConfig';
 import { Service } from '../models/Service';
 import {List} from 'ts-generic-collections-linq';
+import { AppConfig } from '../models/AppConfig';
 export class Selectors{
 
-	conf: Config = new Config();
+	conf:AppConfig =  AppConfig.getInstance();
 	
 	constructor(){}
 
@@ -15,10 +15,10 @@ export class Selectors{
 			service: Service;
 		}
 
-		const servicesName:string[] = this.conf.getServicesName();
+		const servicesName = new List(this.conf.services).select(x=> x.name);
 	
-		return vscode.window.showQuickPick(servicesName).then(item => {
-			const services = new List(this.conf.getServices());
+		return vscode.window.showQuickPick(servicesName.toArray()).then(item => {
+			const services = new List(this.conf.services);
 			const service = services.firstOrDefault(x=>x.name==item);
 			return service ? service : undefined;
 		});
@@ -30,7 +30,7 @@ export class Selectors{
 			service: string;
 		}
 
-		const clusters:string[] = this.conf.getConfig().clusters;
+		const clusters:string[] = this.conf.clusters;
 	
 		return vscode.window.showQuickPick(clusters).then(item => {
 			return item ? item : undefined;
