@@ -7,6 +7,7 @@ import { parseJson } from "../common/parseJson";
 export class AppConfig{
 	
 	astPath: string;
+	region: string;
 	devName: string;
 	teamName: string;
 	services: Service[];
