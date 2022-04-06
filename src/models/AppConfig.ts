@@ -12,10 +12,12 @@ export class AppConfig{
 	teamName: string;
 	services: Service[];
 	clusters: string[];
+	isWindows:boolean;
 	private static instance: AppConfig
 
 
 	constructor(){
+		this.isWindows= !(process.env.COMMAND_MODE || "").includes('unix');
 	}
 
 	public static getInstance():AppConfig{

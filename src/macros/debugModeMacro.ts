@@ -21,7 +21,7 @@ export class DebugModeMacro /*extends LambdaExecuterBase*/ implements IMacro {
 		this.selectors.SelectService().then(service => {
 			const terminal = Outputs.GetMainTerminal();
 			terminal.show(true);
-			
+
 			if(service){	
 				//if(service =="publisher")
 				//var yml = open application.yaml <- parse yml 
