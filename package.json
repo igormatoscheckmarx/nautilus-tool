@@ -37,6 +37,7 @@
 		"onCommand:cxDevTools.astDeleteService",
 		"onCommand:cxDevTools.astCreateCluster",
 		"onCommand:cxDevTools.dockerCreateImage",
+		"onCommand:cxDevTools.astUpgrade",
 		"onTerminalProfile:cxDevTools.terminal-profile"
 	],
 	"main": "./out/extension.js",
@@ -75,6 +76,11 @@
 			{
 				"command": "cxDevTools.astDebugMode",
 				"title": "Debug Mode",
+				"category": "CxDev"
+			},
+			{
+				"command": "cxDevTools.astUpgrade",
+				"title": "Ast Upgrade",
 				"category": "CxDev"
 			}
 		],
