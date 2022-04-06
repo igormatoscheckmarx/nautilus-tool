@@ -25,17 +25,12 @@ export class CreateClusterMacro /*extends LambdaExecuterBase*/ implements IMacro
 			terminal.show(true);
 			
 			if(cluster){			
-				//terminal.sendText(`Deleting Cluster ${cluster}`);
 				terminal.sendText(`eksctl create cluster --name ${cluster} --region eu-west-3 --node-type t3a.xlarge --nodes 2 --nodes-min 1 --nodes-max 3`);
-
 				terminal.sendText(`cd ${this.conf.astPath}/helm`);
 				terminal.sendText("make ecr");
 				terminal.sendText("helm dep up ast");
 				terminal.sendText("helm upgrade main ast -f ./ast/values-customer.yaml -f ./ast/values-release-tags.yaml --install");
-				//terminal.sendText(`x=0;while [ $x -le 1 ];do sleep 2; x=$(kubectl get pods |  wc -l); if [ $x>0 ]; then echo "Waiting Pods to be deleted"; else x=2;  fi; done`);
 				terminal.sendText(`$x=1; while ($x -lt 60 ) {sleep 2 ;$x=kubectl get pods | Measure-Object | %{$_.Count}; if ($x -lt 60) {echo "Waiting Pods to be created"}}`);
-			
-						
 				terminal.sendText(`'Macro finished'`);		
 			} else terminal.sendText(`Operation Canceled`);
 			
