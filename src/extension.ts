@@ -4,9 +4,14 @@ import {CommandRegister,TerminalCluster} from "./registers/commandRegister";
 import {MacroRegister} from "./registers/macroRegister";
 import {DeployServiceMacro,} from "./macros/deployServiceMacro";
 import {DeleteServiceMacro,} from "./macros/deleteServiceMacro";
+<<<<<<< HEAD
 import { DeleteClusterMacro } from './macros/deleteClusterMacro';
 import { DebugModeMacro } from './macros/debugModeMacro';
 
+=======
+import {CreateClusterMacro,} from "./macros/CreateClusterMacro";
+import {DeleteClusterMacro ,} from './macros/deleteClusterMacro';
+>>>>>>> ely
 
 export function activate(context: vscode.ExtensionContext) {
 		
@@ -25,6 +30,10 @@ export function activate(context: vscode.ExtensionContext) {
 	macroRegister.Register(new DeployServiceMacro(),"astDeployService");
 	macroRegister.Register(new DeleteServiceMacro(),"astDeleteService");
 	macroRegister.Register(new DeleteClusterMacro(),"astDeleteCluster");
+<<<<<<< HEAD
 	macroRegister.Register(new DebugModeMacro(),"astDebugMode");
+=======
+	macroRegister.Register(new CreateClusterMacro(),"astCreateCluster");
+>>>>>>> ely
 	
 }
