@@ -9,6 +9,7 @@ const debugModeMacro_1 = require("./macros/debugModeMacro");
 const CreateClusterMacro_1 = require("./macros/CreateClusterMacro");
 const deleteClusterMacro_1 = require("./macros/deleteClusterMacro");
 const AstUpgradeMacro_1 = require("./macros/AstUpgradeMacro");
+const openActuatorMacro_1 = require("./macros/openActuatorMacro");
 function activate(context) {
     const commandRegister = new commandRegister_1.CommandRegister(context);
     const macroRegister = new macroRegister_1.MacroRegister(context);
@@ -25,6 +26,7 @@ function activate(context) {
     macroRegister.Register(new debugModeMacro_1.DebugModeMacro(), "astDebugMode");
     macroRegister.Register(new CreateClusterMacro_1.CreateClusterMacro(), "astCreateCluster");
     macroRegister.Register(new AstUpgradeMacro_1.AstUpgradeMacro(), "astUpgrade");
+    macroRegister.Register(new openActuatorMacro_1.OpenActuatorMacro(), "openActuator");
 }
 exports.activate = activate;
 //# sourceMappingURL=extension.js.map

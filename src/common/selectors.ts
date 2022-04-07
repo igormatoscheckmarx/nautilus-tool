@@ -4,6 +4,8 @@ import * as vscode from 'vscode';
 import { Service } from '../models/Service';
 import {List} from 'ts-generic-collections-linq';
 import { AppConfig } from '../models/AppConfig';
+import * as fs from "fs";
+import { parse, parseAllDocuments, stringify } from 'yaml';
 export class Selectors{
 
 	conf:AppConfig =  AppConfig.getInstance();
@@ -52,4 +54,24 @@ export class Selectors{
 			return item ? item.terminal : undefined;
 		});
 	}
+
+	selectActuator(): Thenable<string | undefined> {
+		const path= `${this.conf.astPath}/helm/managemnt/servicemonitor.yaml`;
+		const actuators:string[] = [];
+		if( fs.existsSync(path)) {            
+			const text =  fs.readFileSync(path).toString();  
+			const ymlActuators:any[] = parseAllDocuments(text);
+			
+			ymlActuators.forEach(element => {
+				actuators.push(element.toJSON().metadata.labels["k8s-app"]);
+			});
+		}
+				
+		
+	
+		return vscode.window.showQuickPick(actuators).then(item => {
+			return item ? item : undefined;
+		});
+	}
+
 }

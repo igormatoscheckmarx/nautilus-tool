@@ -2,12 +2,13 @@
 import * as vscode from 'vscode';
 import {CommandRegister,TerminalCluster} from "./registers/commandRegister";
 import {MacroRegister} from "./registers/macroRegister";
-import {DeployServiceMacro,} from "./macros/deployServiceMacro";
-import {DeleteServiceMacro,} from "./macros/deleteServiceMacro";
-import { DebugModeMacro } from './macros/debugModeMacro';
-import {CreateClusterMacro,} from "./macros/CreateClusterMacro";
-import {DeleteClusterMacro ,} from './macros/deleteClusterMacro';
-import {AstUpgradeMacro ,} from './macros/AstUpgradeMacro';
+import {DeployServiceMacro} from "./macros/deployServiceMacro";
+import {DeleteServiceMacro} from "./macros/deleteServiceMacro";
+import { DebugModeMacro} from './macros/debugModeMacro';
+import {CreateClusterMacro} from "./macros/CreateClusterMacro";
+import {DeleteClusterMacro} from './macros/deleteClusterMacro';
+import {AstUpgradeMacro} from './macros/AstUpgradeMacro';
+import {OpenActuatorMacro} from './macros/openActuatorMacro';
 
 export function activate(context: vscode.ExtensionContext) {
 		
@@ -29,5 +30,6 @@ export function activate(context: vscode.ExtensionContext) {
 	macroRegister.Register(new DebugModeMacro(),"astDebugMode");
 	macroRegister.Register(new CreateClusterMacro(),"astCreateCluster");
 	macroRegister.Register(new AstUpgradeMacro(),"astUpgrade");
+	macroRegister.Register(new OpenActuatorMacro(),"openActuator");
 	
 }

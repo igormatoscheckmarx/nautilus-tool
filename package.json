@@ -38,6 +38,7 @@
 		"onCommand:cxDevTools.astCreateCluster",
 		"onCommand:cxDevTools.dockerCreateImage",
 		"onCommand:cxDevTools.astUpgrade",
+		"onCommand:cxDevTools.openActuator",
 		"onTerminalProfile:cxDevTools.terminal-profile"
 	],
 	"main": "./out/extension.js",
@@ -81,6 +82,11 @@
 			{
 				"command": "cxDevTools.astUpgrade",
 				"title": "Ast Upgrade",
+				"category": "CxDev"
+			},
+			{
+				"command": "cxDevTools.openActuator",
+				"title": "Open Actuator",
 				"category": "CxDev"
 			}
 		],

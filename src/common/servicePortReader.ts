@@ -14,10 +14,10 @@ export class ServicePortReader{
 	conf: AppConfig = AppConfig.getInstance();
     constructor(){}
 
-    Read = (service:Service): Promise<any> =>{
+    Read = (service:string): Promise<any> =>{
 		const cx = this.conf;
 		return new Promise(function (resolve, reject){
-			const uri= `${cx.astPath}${service.chartPath}/values.yaml`;
+			const uri= `${cx.astPath}${service}/values.yaml`;
 			vscode.workspace.openTextDocument(uri).then((document) => {
 				const text = document.getText();
 				//potFoward here
