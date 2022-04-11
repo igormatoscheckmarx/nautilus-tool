@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import * as vscode from 'vscode';
+import * as readline from 'readline';
 import {IMacro} from "../registers/macroRegister";
 import {Selectors} from "../common/selectors";
 import {Guid} from "../common/guid";
@@ -7,6 +8,7 @@ import {Outputs} from "../common/outputs";
 import {AppConfig}  from '../models/AppConfig';
 import {ServicePortReader}  from '../common/servicePortReader';
 import { Service } from '../models/Service';
+import { stdin, stdout } from 'process';
 export class CreateClusterMacro /*extends LambdaExecuterBase*/ implements IMacro {
 	
 
@@ -24,7 +26,10 @@ export class CreateClusterMacro /*extends LambdaExecuterBase*/ implements IMacro
 			const terminal = Outputs.GetMainTerminal();
 			terminal.show(true);
 			
-			if(cluster){			
+			
+			if(cluster){
+					
+	
 				terminal.sendText(`eksctl create cluster --name ${cluster} --region ${this.conf.region} --node-type t3a.xlarge --nodes 2 --nodes-min 1 --nodes-max 3`);
 				terminal.sendText(`cd ${this.conf.astPath}/helm`);
 				terminal.sendText("make ecr");
