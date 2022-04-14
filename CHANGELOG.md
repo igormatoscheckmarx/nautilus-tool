@@ -19,4 +19,5 @@ All notable Changes
  [x] aws login
  [x] show actuator
  
- 
+ ## [0.0.4]
+ - Bug Fix (Open new terminal for actuators)

@@ -43,5 +43,9 @@ export class Outputs{
 			return vscode.window.createTerminal("Main terminal");						
 		} else return mainTerminal as vscode.Terminal;
 	}
+
+	public static GetNewTerminal(name:string): vscode.Terminal {
+		return vscode.window.createTerminal(name);	
+	}
 }
 

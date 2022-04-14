@@ -18,7 +18,8 @@ export class OpenActuatorMacro implements IMacro {
     Execute (): void{
 		
 		this.selectors.selectActuator().then(actuator => {
-			const terminal = Outputs.GetMainTerminal();
+
+			const terminal = Outputs.GetNewTerminal(actuator||"");
 			terminal.show(true);
 
 			if(actuator){					

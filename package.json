@@ -2,7 +2,7 @@
 	"name": "cxnautilus",
 	"displayName": "cX Nautilus",
 	"description": "cx Nautilus Tools",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"publisher": "Checkmarx",
 	"private": true,
 	"icon": "icon.png",
