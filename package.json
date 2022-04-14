@@ -28,14 +28,18 @@
 		"onCommand:cxDevTools.astPrometheus",
 		"onCommand:cxDevTools.astUpgrade",
 		"onCommand:cxDevTools.astDebugMode",
-		"onCommand:cxDevTools.astDeleteCluster",
+		"onCommand:cxDevTools.awsDeleteCluster",
+		"onCommand:cxDevTools.awsCreateCluster",
+		"onCommand:cxDevTools.awsBuildCluster",
+		"onCommand:cxDevTools.awsConnectCluster",
+		"onCommand:cxDevTools.awsLogin",
 		"onCommand:cxDevTools.astFirstDeploy",
 		"onCommand:cxDevTools.astServicePortFowarding",
 		"onCommand:cxDevTools.astGrafanaPortFowarding",
 		"onCommand:cxDevTools.astDebugPortFowarding",
 		"onCommand:cxDevTools.astDeployService",
 		"onCommand:cxDevTools.astDeleteService",
-		"onCommand:cxDevTools.astCreateCluster",
+		
 		"onCommand:cxDevTools.dockerCreateImage",
 		"onCommand:cxDevTools.astUpgrade",
 		"onCommand:cxDevTools.openActuator",
@@ -65,13 +69,23 @@
 				"category": "CxDev"
 			},
 			{
-				"command": "cxDevTools.astCreateCluster",
+				"command": "cxDevTools.awsCreateCluster",
 				"title": "Create Cluster",
 				"category": "CxDev"
 			},
 			{
-				"command": "cxDevTools.astDeleteCluster",
+				"command": "cxDevTools.awsDeleteCluster",
 				"title": "Delete Cluster",
+				"category": "CxDev"
+			},
+			{
+				"command": "cxDevTools.awsConnectCluster",
+				"title": "Connect Cluster",
+				"category": "CxDev"
+			},
+			{
+				"command": "cxDevTools.awsBuildCluster",
+				"title": "Build Cluster",
 				"category": "CxDev"
 			},
 			{
@@ -82,6 +96,11 @@
 			{
 				"command": "cxDevTools.astUpgrade",
 				"title": "Ast Upgrade",
+				"category": "CxDev"
+			},
+			{
+				"command": "cxDevTools.awsLogin",
+				"title": "AWS Login",
 				"category": "CxDev"
 			},
 			{

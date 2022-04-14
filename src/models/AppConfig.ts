@@ -12,6 +12,7 @@ export class AppConfig{
 	teamName: string;
 	services: Service[];
 	clusters: string[];
+	regions: string[];
 	isWindows:boolean;
 	private static instance: AppConfig
 

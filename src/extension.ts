@@ -5,10 +5,12 @@ import {MacroRegister} from "./registers/macroRegister";
 import {DeployServiceMacro} from "./macros/deployServiceMacro";
 import {DeleteServiceMacro} from "./macros/deleteServiceMacro";
 import { DebugModeMacro} from './macros/debugModeMacro';
-import {CreateClusterMacro} from "./macros/CreateClusterMacro";
+import {BuildClusterMacro} from "./macros/buildClusterMacro";
+import {CreateClusterMacro} from "./macros/createClusterMacro";
 import {DeleteClusterMacro} from './macros/deleteClusterMacro';
-import {AstUpgradeMacro} from './macros/AstUpgradeMacro';
+import {AstUpgradeMacro} from './macros/astUpgradeMacro';
 import {OpenActuatorMacro} from './macros/openActuatorMacro';
+import { ConnectClusterMacro } from './macros/connectClusterMacro';
 
 export function activate(context: vscode.ExtensionContext) {
 		
@@ -22,14 +24,17 @@ export function activate(context: vscode.ExtensionContext) {
 	commandRegister.RegisterCluster(terminalCluster);
 	
 	commandRegister.Register("java",["mvn clean install -DskipTests"],"","mavenCompile");	
+	commandRegister.Register("aws",["aws sso login --profile default"],"","awsLogin");	
 
 	//Macros
 	macroRegister.Register(new DeployServiceMacro(),"astDeployService");
-	macroRegister.Register(new DeleteServiceMacro(),"astDeleteService");
-	macroRegister.Register(new DeleteClusterMacro(),"astDeleteCluster");
-	macroRegister.Register(new DebugModeMacro(),"astDebugMode");
-	macroRegister.Register(new CreateClusterMacro(),"astCreateCluster");
+	macroRegister.Register(new DeleteServiceMacro(),"astDeleteService");	
+	macroRegister.Register(new DebugModeMacro(),"astDebugMode");	
 	macroRegister.Register(new AstUpgradeMacro(),"astUpgrade");
 	macroRegister.Register(new OpenActuatorMacro(),"openActuator");
+	macroRegister.Register(new BuildClusterMacro(),"awsBuildCluster");
+	macroRegister.Register(new ConnectClusterMacro(),"awsConnectCluster");
+	macroRegister.Register(new CreateClusterMacro(),"awsCreateCluster");
+	macroRegister.Register(new DeleteClusterMacro(),"awsDeleteCluster");
 	
 }

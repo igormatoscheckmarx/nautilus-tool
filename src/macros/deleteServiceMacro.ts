@@ -12,7 +12,7 @@ export class DeleteServiceMacro /*extends LambdaExecuterBase*/ implements IMacro
 
     Execute (): void{
 		
-		this.selectors.SelectService().then(service => {
+		this.selectors.selectService().then(service => {
 			const terminal = Outputs.GetMainTerminal(); 
 			terminal.show(true);
 			

@@ -8,15 +8,20 @@ import {Outputs} from "../common/outputs";
 import {AppConfig}  from '../models/AppConfig';
 import {ServicePortReader}  from '../common/servicePortReader';
 import { Service } from '../models/Service';
-export class CreateClusterMacro /*extends LambdaExecuterBase*/ implements IMacro {
+import * as cp from 'child_process';
+import {List} from 'ts-generic-collections-linq';
+
+export class ConnectClusterMacro /*extends LambdaExecuterBase*/ implements IMacro {
 	
 
 	selectors : Selectors;
-	conf: AppConfig = AppConfig.getInstance();
 	clusterConfigReader: ClusterConfigReader;
+	conf: AppConfig = AppConfig.getInstance();
+
 	portReader = new ServicePortReader();
     constructor(){		
 		this.selectors = new Selectors();
+		this.clusterConfigReader = new ClusterConfigReader();
 	}
 
     Execute (): void{
@@ -24,16 +29,24 @@ export class CreateClusterMacro /*extends LambdaExecuterBase*/ implements IMacro
 		this.selectors.selectCluster().then(cluster => {
 			this.selectors.selectRegion().then(region => {
 				const terminal = Outputs.GetMainTerminal();
-				if(cluster && region){						
-					terminal.show(true);				
-					this.clusterConfigReader.FindCluster(cluster||"",region||"").then((c) => { 
-						if(c){		
-							terminal.sendText(`echo "Cluster ${c}" already exist in your contexts`);
-						}else {
-								
-								terminal.sendText(`eksctl create cluster --name ${cluster} --region ${region} --node-type t3a.xlarge --nodes 2 --nodes-min 1 --nodes-max 3`);	
+				terminal.show(true);
+				if(cluster && region){			
+						
+					this.clusterConfigReader.FindCluster(cluster,region).then((c) => { 
+						if(c){														
+							terminal.sendText(`kubectl config delete-context ${c}`);							
 						}
-					});	
+						
+						terminal.sendText(`aws eks update-kubeconfig --region ${region} --name ${cluster}`);	
+						this.clusterConfigReader.FindCluster(cluster,region).then((c) => { 
+							if(c){		
+								terminal.sendText(`kubectl config use-context ${c}`);
+							}
+						});	
+						terminal.sendText(`kubectl config get-contexts`);
+						
+					});				
+					
 				} else terminal.sendText(`Operation Canceled`);
 			});		
 		});		

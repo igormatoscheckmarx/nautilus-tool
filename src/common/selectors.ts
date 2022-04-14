@@ -12,7 +12,7 @@ export class Selectors{
 	
 	constructor(){}
 
-	SelectService(): Thenable<Service | undefined> {
+	selectService(): Thenable<Service | undefined> {
 		interface ServiceQuickPickItem extends vscode.QuickPickItem {
 			service: Service;
 		}
@@ -27,7 +27,7 @@ export class Selectors{
 	}
 
 
-	SelectCluster(): Thenable<string | undefined> {
+	selectCluster(): Thenable<string | undefined> {
 		interface ServiceQuickPickItem extends vscode.QuickPickItem {
 			service: string;
 		}
@@ -35,6 +35,18 @@ export class Selectors{
 		const clusters:string[] = this.conf.clusters;
 	
 		return vscode.window.showQuickPick(clusters).then(item => {
+			return item ? item : undefined;
+		});
+	}
+
+	selectRegion(): Thenable<string | undefined> {
+		interface ServiceQuickPickItem extends vscode.QuickPickItem {
+			service: string;
+		}
+
+		const regions:string[] = this.conf.regions;
+	
+		return vscode.window.showQuickPick(regions).then(item => {
 			return item ? item : undefined;
 		});
 	}
