@@ -14,16 +14,27 @@ export class ServicePortReader{
 	conf: AppConfig = AppConfig.getInstance();
     constructor(){}
 
-    Read = (service:string): Promise<any> =>{
+    Read = (service:string, portKind: PortKind): Promise<any> =>{
 		const cx = this.conf;
 		return new Promise(function (resolve, reject){
 			const uri= `${cx.astPath}${service}/values.yaml`;
 			vscode.workspace.openTextDocument(uri).then((document) => {
 				const text = document.getText();
 				//potFoward here
-				const serviceValues = parse(text);			
-				resolve(serviceValues.service.grpcPort);				
+				const serviceValues = parse(text);
+				if(portKind==PortKind.Grpc)			
+					resolve(serviceValues.service.grpcPort);				
+				else if(portKind==PortKind.Health)			
+					resolve(`${serviceValues.healthProbes.port}:${serviceValues.service.port}`);				
+				else 
+					resolve(serviceValues.service.port);		
 			});
 		});
 	}
 }
+
+export enum PortKind {
+	Grpc,
+	Health,
+	Http
+  }

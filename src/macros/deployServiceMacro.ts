@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import * as vscode from 'vscode';
 import {IMacro} from "../registers/macroRegister";
 import {Selectors} from "../common/selectors";
 import {Guid} from "../common/guid";
 import {Outputs} from "../common/outputs";
-export class DeployServiceMacro /*extends LambdaExecuterBase*/ implements IMacro {
+
+export class DeployServiceMacro  implements IMacro {
 
 	selectors : Selectors;
     constructor(){		

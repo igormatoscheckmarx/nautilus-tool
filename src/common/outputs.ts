@@ -1,6 +1,4 @@
 /* eslint-disable prefer-const */
-
-
 /* eslint-disable @typescript-eslint/no-empty-function */
 'use strict';
 import * as vscode from 'vscode';

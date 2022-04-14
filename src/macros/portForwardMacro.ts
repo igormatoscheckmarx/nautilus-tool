@@ -1,13 +1,11 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import * as vscode from 'vscode';
 import {IMacro} from "../registers/macroRegister";
 import {Selectors} from "../common/selectors";
-import {Guid} from "../common/guid";
 import {Outputs} from "../common/outputs";
 import {AppConfig}  from '../models/AppConfig';
 import {ServicePortReader}  from '../common/servicePortReader';
-import { Service } from '../models/Service';
-export class PortoForwardMacro /*extends LambdaExecuterBase*/ implements IMacro {
+
+export class PortoForwardMacro implements IMacro {
 
 	selectors : Selectors;
 	conf: AppConfig = AppConfig.getInstance();

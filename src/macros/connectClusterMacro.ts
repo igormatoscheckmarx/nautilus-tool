@@ -1,19 +1,13 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import * as vscode from 'vscode';
 import {IMacro} from "../registers/macroRegister";
 import {Selectors} from "../common/selectors";
 import {ClusterConfigReader} from "../common/clusterVerifier";
-import {Guid} from "../common/guid";
 import {Outputs} from "../common/outputs";
 import {AppConfig}  from '../models/AppConfig';
 import {ServicePortReader}  from '../common/servicePortReader';
-import { Service } from '../models/Service';
-import * as cp from 'child_process';
-import {List} from 'ts-generic-collections-linq';
 
-export class ConnectClusterMacro /*extends LambdaExecuterBase*/ implements IMacro {
+export class ConnectClusterMacro implements IMacro {
 	
-
 	selectors : Selectors;
 	clusterConfigReader: ClusterConfigReader;
 	conf: AppConfig = AppConfig.getInstance();

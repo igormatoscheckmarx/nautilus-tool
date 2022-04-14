@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import * as vscode from 'vscode';
 import {IMacro} from "../registers/macroRegister";
 import {Selectors} from "../common/selectors";
 import {Outputs} from "../common/outputs";
-export class DeleteServiceMacro /*extends LambdaExecuterBase*/ implements IMacro {
+
+export class DeleteServiceMacro implements IMacro {
 
 	selectors : Selectors;	
     constructor(){		

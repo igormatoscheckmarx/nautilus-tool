@@ -4,10 +4,9 @@ import {IMacro} from "../registers/macroRegister";
 import {Selectors} from "../common/selectors";
 import {Outputs} from "../common/outputs";
 import {AppConfig}  from '../models/AppConfig';
-import {ServicePortReader}  from '../common/servicePortReader';
+import {ServicePortReader,PortKind}  from '../common/servicePortReader';
 
-
-export class OpenActuatorMacro /*extends LambdaExecuterBase*/ implements IMacro {
+export class OpenActuatorMacro implements IMacro {
 
 	selectors : Selectors;
 	conf: AppConfig = AppConfig.getInstance();
@@ -23,7 +22,7 @@ export class OpenActuatorMacro /*extends LambdaExecuterBase*/ implements IMacro 
 			terminal.show(true);
 
 			if(actuator){					
-				this.portReader.Read("/helm/charts/"+actuator).then((port) => { 			
+				this.portReader.Read("/helm/charts/"+actuator,PortKind.Health).then((port) => { 			
 					terminal.sendText(`kubectl port-forward svc/main-${actuator} ${port}`);
 					vscode.env.openExternal(vscode.Uri.parse(`http://localhost:${port}/actuator/prometheus`));
 				});				

@@ -2,7 +2,7 @@
 	"name": "cxnautilus",
 	"displayName": "cX Nautilus",
 	"description": "cx Nautilus Tools",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "Checkmarx",
 	"private": true,
 	"icon": "icon.png",
@@ -65,7 +65,7 @@
 			},
 			{
 				"command": "cxDevTools.astDeleteService",
-				"title": "Delete Service",
+				"title": "AWS Delete Service",
 				"category": "CxDev"
 			},
 			{
@@ -75,17 +75,17 @@
 			},
 			{
 				"command": "cxDevTools.awsDeleteCluster",
-				"title": "Delete Cluster",
+				"title": "AWS Delete Cluster",
 				"category": "CxDev"
 			},
 			{
 				"command": "cxDevTools.awsConnectCluster",
-				"title": "Connect Cluster",
+				"title": "AWS Connect Cluster",
 				"category": "CxDev"
 			},
 			{
 				"command": "cxDevTools.awsBuildCluster",
-				"title": "Build Cluster",
+				"title": "AWS Build Cluster",
 				"category": "CxDev"
 			},
 			{

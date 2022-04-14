@@ -5,7 +5,7 @@ import { Service } from '../models/Service';
 import {List} from 'ts-generic-collections-linq';
 import { AppConfig } from '../models/AppConfig';
 import * as fs from "fs";
-import { parse, parseAllDocuments, stringify } from 'yaml';
+import { parseAllDocuments } from 'yaml';
 export class Selectors{
 
 	conf:AppConfig =  AppConfig.getInstance();
@@ -78,9 +78,7 @@ export class Selectors{
 				actuators.push(element.toJSON().metadata.labels["k8s-app"]);
 			});
 		}
-				
-		
-	
+
 		return vscode.window.showQuickPick(actuators).then(item => {
 			return item ? item : undefined;
 		});

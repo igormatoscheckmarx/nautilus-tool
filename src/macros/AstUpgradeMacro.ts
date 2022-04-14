@@ -1,15 +1,12 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import * as vscode from 'vscode';
 import {IMacro} from "../registers/macroRegister";
 import {Selectors} from "../common/selectors";
-import {Guid} from "../common/guid";
 import {Outputs} from "../common/outputs";
 import {AppConfig}  from '../models/AppConfig';
 import {ServicePortReader}  from '../common/servicePortReader';
-import { Service } from '../models/Service';
-export class AstUpgradeMacro /*extends LambdaExecuterBase*/ implements IMacro {
-	
 
+export class AstUpgradeMacro implements IMacro {
+	
 	selectors : Selectors;
 	conf: AppConfig = AppConfig.getInstance();
 
@@ -19,7 +16,6 @@ export class AstUpgradeMacro /*extends LambdaExecuterBase*/ implements IMacro {
 	}
 
     Execute (): void{
-		
 		
 			const terminal = Outputs.GetMainTerminal();
 			terminal.show(true);
