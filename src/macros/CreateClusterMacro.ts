@@ -14,6 +14,7 @@ export class CreateClusterMacro implements IMacro {
 	portReader = new ServicePortReader();
     constructor(){		
 		this.selectors = new Selectors();
+		this.clusterConfigReader = new ClusterConfigReader();
 	}
 
     Execute (): void{
@@ -23,13 +24,17 @@ export class CreateClusterMacro implements IMacro {
 				const terminal = Outputs.GetMainTerminal();
 				if(cluster && region){						
 					terminal.show(true);				
-					this.clusterConfigReader.FindCluster(cluster||"",region||"").then((c) => { 
+					this.clusterConfigReader.findCluster(cluster||"",region||"").then((c) => { 
 						if(c){		
-							terminal.sendText(`echo "Cluster ${c}" already exist in your contexts`);
-						}else {
-								
-								terminal.sendText(`eksctl create cluster --name ${cluster} --region ${region} --node-type t3a.xlarge --nodes 2 --nodes-min 1 --nodes-max 3`);	
+							terminal.sendText(`kubectl config delete-context ${c}`);		
+							terminal.sendText(`echo "${c}" already exist in your contexts`);
+							terminal.sendText(`echo Context "${c}" deleted`);
+							
 						}
+						
+						terminal.sendText(`Start Creating Cluster`);
+						terminal.sendText(`eksctl create cluster --name ${cluster} --region ${region} --node-type t3a.xlarge --nodes 2 --nodes-min 1 --nodes-max 3`);	
+						
 					});	
 				} else terminal.sendText(`Operation Canceled`);
 			});		

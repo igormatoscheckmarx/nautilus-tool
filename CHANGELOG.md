@@ -21,3 +21,9 @@ All notable Changes
  
  ## [0.0.4]
  - Bug Fix (Open new terminal for actuators)
+
+  ## [0.0.5]
+ - Bug Fix (Create Cluster)
+
+  ## [0.0.6]
+ - Bug Fix (Build Cluster)

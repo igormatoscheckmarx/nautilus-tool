@@ -17,22 +17,15 @@ export class BuildClusterMacro implements IMacro {
 
     Execute (): void{
 		
-		this.selectors.selectCluster().then(cluster => {
-			this.selectors.selectRegion().then(region => {
-				const terminal = Outputs.GetMainTerminal();
-				terminal.show(true);
-				
-				if(cluster && region){			
-					terminal.sendText(`eksctl create cluster --name ${cluster} --region ${region} --node-type t3a.xlarge --nodes 2 --nodes-min 1 --nodes-max 3`);
-					terminal.sendText(`cd ${this.conf.astPath}/helm`);
-					terminal.sendText("make ecr");
-					terminal.sendText("helm dep up ast");
-					terminal.sendText("helm upgrade main ast -f ./ast/values-customer.yaml -f ./ast/values-release-tags.yaml --install");				
-					terminal.sendText(`'Macro finished'`);		
-				} else terminal.sendText(`Operation Canceled`);
-				
-				
-			});		
-		});		
+		
+		const terminal = Outputs.GetMainTerminal();
+		terminal.show(true);		
+	
+		terminal.sendText(`cd ${this.conf.astPath}/helm`);
+		terminal.sendText("make ecr");
+		terminal.sendText("helm dep up ast");
+		terminal.sendText("helm upgrade main ast -f ./ast/values-customer.yaml -f ./ast/values-release-tags.yaml --install");				
+		terminal.sendText(`'Macro finished'`);		
+		
 	}
 }

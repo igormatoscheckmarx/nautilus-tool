@@ -26,13 +26,13 @@ export class ConnectClusterMacro implements IMacro {
 				terminal.show(true);
 				if(cluster && region){			
 						
-					this.clusterConfigReader.FindCluster(cluster,region).then((c) => { 
+					this.clusterConfigReader.findCluster(cluster,region).then((c) => { 
 						if(c){														
 							terminal.sendText(`kubectl config delete-context ${c}`);							
 						}
 						
 						terminal.sendText(`aws eks update-kubeconfig --region ${region} --name ${cluster}`);	
-						this.clusterConfigReader.FindCluster(cluster,region).then((c) => { 
+						this.clusterConfigReader.findCluster(cluster,region).then((c) => { 
 							if(c){		
 								terminal.sendText(`kubectl config use-context ${c}`);
 							}

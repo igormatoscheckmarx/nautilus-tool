@@ -14,7 +14,7 @@ export class ClusterConfigReader{
 
 	conf: AppConfig = AppConfig.getInstance();
     constructor(){}
-	FindCluster = (cluster:string, region:string): Promise<any> =>{
+	findCluster = (cluster:string, region:string): Promise<any> =>{
 		const cx = this.conf;
 		return new Promise(function (resolve, reject){
 			const verb = cx.isWindows?"findstr":"grep";
