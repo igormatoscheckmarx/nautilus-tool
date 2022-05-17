@@ -31,9 +31,8 @@ export class CreateClusterMacro implements IMacro {
 							terminal.sendText(`echo Context "${c}" deleted`);
 							
 						}
-						
-						terminal.sendText(`Start Creating Cluster`);
-						terminal.sendText(`eksctl create cluster --name ${cluster} --region ${region} --node-type t3a.xlarge --nodes 2 --nodes-min 1 --nodes-max 3`);	
+						terminal.sendText(` echo "Start Creating Cluster"`);
+						terminal.sendText(`eksctl create cluster --name ${cluster} --region ${region} --node-type t3.xlarge --nodes 2 --nodes-min 1 --nodes-max 3`);	
 						
 					});	
 				} else terminal.sendText(`Operation Canceled`);
