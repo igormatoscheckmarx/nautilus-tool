@@ -25,7 +25,7 @@ export class DeleteClusterMacro implements IMacro {
                 
                 if(cluster && region){          
                     terminal.sendText(`clear`);
-					terminal.sendText(` $name_cluster = Read-Host -Prompt 'To make sure you want to delete the cluster name  ${cluster} Please enter "delete cluster name  ${cluster}"'` );
+					terminal.sendText(` $name_cluster = Read-Host -Prompt 'To make sure you want to delete the cluster name  ${cluster} Please enter "delete cluster name  ${cluster}"' `,true );
                     terminal.sendText(`if ($name_cluster -ne "delete cluster name  ${cluster}") {exit}`);
 
                     terminal.sendText(`echo "Deleting Cluster ${cluster}"`);

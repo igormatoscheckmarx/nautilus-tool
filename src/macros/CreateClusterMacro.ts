@@ -32,7 +32,15 @@ export class CreateClusterMacro implements IMacro {
 							
 						}
 						terminal.sendText(` echo "Start Creating Cluster"`);
-						terminal.sendText(`eksctl create cluster --name ${cluster} --region ${region} --node-type t3.xlarge --nodes 2 --nodes-min 1 --nodes-max 3`);	
+						terminal.sendText(`eksctl create cluster --name ${cluster} --region ${region} --node-type t3.xlarge --nodes 2 --nodes-min 1 --nodes-max 3`);
+							
+						terminal.sendText(`cd ${this.conf.astPath}/helm`);
+						terminal.sendText("make ecr");
+						terminal.sendText("helm dep up ast");
+						terminal.sendText("helm upgrade main ast -f ./ast/values-customer.yaml -f ./ast/values-release-tags.yaml --install");
+						terminal.sendText(`$x=1; while ($x -lt 60 ) {sleep 2 ;$x=kubectl get pods | Measure-Object | %{$_.Count}; if ($x -lt 60) {echo "Waiting Pods to be created"}}`);
+						terminal.sendText(`'Macro finished'`);		
+								
 						
 					});	
 				} else terminal.sendText(`Operation Canceled`);

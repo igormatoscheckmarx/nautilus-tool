@@ -6,7 +6,7 @@ import {Outputs} from "../common/outputs";
 import {AppConfig}  from '../models/AppConfig';
 import {ServicePortReader}  from '../common/servicePortReader';
 
-export class ConnectClusterMacro implements IMacro {
+export class pMacro implements IMacro {
 	
 	selectors : Selectors;
 	clusterConfigReader: ClusterConfigReader;
@@ -28,7 +28,7 @@ export class ConnectClusterMacro implements IMacro {
 						
 					this.clusterConfigReader.findCluster(cluster,region).then((c) => { 
 						if(c){														
-							terminal.sendText(`kubectl config delete-context ${c}`);							
+							terminal.sendText(` $kubectl config delete-context{c}`);							
 						}
 						
 						terminal.sendText(`aws eks update-kubeconfig --region ${region} --name ${cluster}`);	
